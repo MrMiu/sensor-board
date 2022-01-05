@@ -4,6 +4,11 @@
 
 package frc.robot;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -18,9 +23,9 @@ import frc.robot.subsystems.SensorSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final SensorSubsystem m_exampleSubsystem = new SensorSubsystem();
+  private final SensorSubsystem sensorSubsystem = new SensorSubsystem(new CANSparkMax(Constants.boardMotorID, MotorType.kBrushless), new DigitalInput(Constants.digitalSwitchPort), new AnalogInput(Constants.analogSwitchPort));
 
-  private final SensorCommand m_autoCommand = new SensorCommand(m_exampleSubsystem);
+  private final SensorCommand sensorCommand = new SensorCommand(sensorSubsystem);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -37,12 +42,11 @@ public class RobotContainer {
   private void configureButtonBindings() {}
 
   /**
-   * Use this to pass the autonomous command to the main {@link Robot} class.
+   * Use this to pass the command to the main {@link Robot} class.
    *
-   * @return the command to run in autonomous
+   * @return the command to run
    */
-  public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+  public Command getSensorCommand() {
+    return sensorCommand;
   }
 }

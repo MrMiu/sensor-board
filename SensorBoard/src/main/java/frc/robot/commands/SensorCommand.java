@@ -10,17 +10,17 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 /** An example command that uses an example subsystem. */
 public class SensorCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final SensorSubsystem m_subsystem;
+  private final SensorSubsystem sensorBoard;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new SensorCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public SensorCommand(SensorSubsystem subsystem) {
-    m_subsystem = subsystem;
+  public SensorCommand(SensorSubsystem sensorBoard) {
+    this.sensorBoard = sensorBoard;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+    addRequirements(sensorBoard);
   }
 
   // Called when the command is initially scheduled.
@@ -29,7 +29,11 @@ public class SensorCommand extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    if (sensorBoard.getSwitchValue() && sensorBoard.getPotentiometerValue() > 0.3) {
+      sensorBoard.setMotor(0.4);
+    }
+  }
 
   // Called once the command ends or is interrupted.
   @Override
