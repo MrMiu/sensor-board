@@ -40,11 +40,13 @@ public class SensorSubsystem implements Subsystem {
     return limitSwitch.get();
   }
 
+  // Returns the Potentiometer of this subsystem
   public AnalogInput getPotentiometer() {
     return potentiometer;
   }
 
-  public int getPOtentiometerValue() {
+  // Returns the value of the limitswitch using the method .getValue()
+  public int getPotentiometerValue() {
     return potentiometer.getValue();
   }
 
