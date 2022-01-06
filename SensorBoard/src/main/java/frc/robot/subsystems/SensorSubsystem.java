@@ -45,7 +45,7 @@ public class SensorSubsystem implements Subsystem {
     return potentiometer;
   }
 
-  // Returns the value of the limitswitch using the method .getValue()
+  // Returns the value of the potentiometer using the method .getValue()
   public int getPotentiometerValue() {
     return potentiometer.getValue();
   }
