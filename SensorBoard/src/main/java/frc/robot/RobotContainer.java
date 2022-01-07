@@ -4,9 +4,11 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.GenericHID;
@@ -23,7 +25,12 @@ import frc.robot.subsystems.SensorSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final SensorSubsystem sensorSubsystem = new SensorSubsystem(new CANSparkMax(Constants.boardMotorID, MotorType.kBrushless), new DigitalInput(Constants.digitalSwitchPort), new AnalogPotentiometer(Constants.analogSwitchPort, Constants.potentiometerTurn));
+  private final SensorSubsystem sensorSubsystem = new SensorSubsystem(
+  new CANSparkMax(Constants.switchMotorID, MotorType.kBrushless), 
+  new TalonSRX(Constants.potMotorID), 
+  new DigitalInput(Constants.digitalSwitchPort), 
+  new DigitalInput(Constants.digitalGatePort), 
+  new AnalogPotentiometer(new AnalogInput(Constants.analogSwitchPort), Constants.potentiometerDegrees));
 
   private final SensorCommand sensorCommand = new SensorCommand(sensorSubsystem);
 
