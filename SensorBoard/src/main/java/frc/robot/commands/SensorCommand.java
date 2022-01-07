@@ -32,8 +32,12 @@ public class SensorCommand extends CommandBase {
   public void execute() {
     if (sensorBoard.getSwitchValue()) {
       sensorBoard.setSwitchMotor(0.3);
+    } else {
+      sensorBoard.setSwitchMotor(0);
     } if (sensorBoard.getPhotoGateValue()) {
       sensorBoard.setPhotoMotor(sensorBoard.getPotentiometerValue());
+    } else {
+      sensorBoard.setPhotoMotor(0);
     }
   }
 
