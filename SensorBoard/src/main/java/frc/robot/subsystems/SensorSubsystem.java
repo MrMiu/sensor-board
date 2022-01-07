@@ -2,17 +2,17 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 
-import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 
 public class SensorSubsystem implements Subsystem {
   CANSparkMax motor;
   DigitalInput limitSwitch;
-  AnalogInput potentiometer;
+  AnalogPotentiometer potentiometer;
 
   // Constructor for our subsytem. In this case its the sensorboard
-  public SensorSubsystem(CANSparkMax motor, DigitalInput limitSwitch, AnalogInput potentiometer) {
+  public SensorSubsystem(CANSparkMax motor, DigitalInput limitSwitch, AnalogPotentiometer potentiometer) {
     this.motor = motor;
     this.limitSwitch = limitSwitch;
     this.potentiometer = potentiometer;
@@ -41,13 +41,13 @@ public class SensorSubsystem implements Subsystem {
   }
 
   // Returns the Potentiometer of this subsystem
-  public AnalogInput getPotentiometer() {
+  public AnalogPotentiometer getPotentiometer() {
     return potentiometer;
   }
 
-  // Returns the value of the potentiometer using the method .getValue()
-  public int getPotentiometerValue() {
-    return potentiometer.getValue();
+  // Returns the value of the potentiometer using the method .get()
+  public double getPotentiometerValue() {
+    return potentiometer.get();
   }
 
   /* 

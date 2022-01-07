@@ -30,7 +30,7 @@ public class SensorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (sensorBoard.getSwitchValue() && sensorBoard.getPotentiometerValue() > 0.3) {
+    if (sensorBoard.getSwitchValue() && sensorBoard.getPotentiometerValue() > 180) {
       sensorBoard.setMotor(0.4);
     }
   }

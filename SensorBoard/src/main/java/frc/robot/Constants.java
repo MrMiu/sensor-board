@@ -16,4 +16,5 @@ public final class Constants {
     public static final int boardMotorID = 12;
     public static final int digitalSwitchPort = 0;
     public static final int analogSwitchPort = 1;
+    public static final int potentiometerTurn = 360 * 10;
 }

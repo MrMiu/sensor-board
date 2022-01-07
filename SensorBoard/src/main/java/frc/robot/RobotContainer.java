@@ -7,7 +7,7 @@ package frc.robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -23,7 +23,7 @@ import frc.robot.subsystems.SensorSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final SensorSubsystem sensorSubsystem = new SensorSubsystem(new CANSparkMax(Constants.boardMotorID, MotorType.kBrushless), new DigitalInput(Constants.digitalSwitchPort), new AnalogInput(Constants.analogSwitchPort));
+  private final SensorSubsystem sensorSubsystem = new SensorSubsystem(new CANSparkMax(Constants.boardMotorID, MotorType.kBrushless), new DigitalInput(Constants.digitalSwitchPort), new AnalogPotentiometer(Constants.analogSwitchPort, Constants.potentiometerTurn));
 
   private final SensorCommand sensorCommand = new SensorCommand(sensorSubsystem);
 
